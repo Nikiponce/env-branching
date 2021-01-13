@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Load the JS file -->
+  <script src="https://cdn.jsdelivr.net/npm/@gitgraph/js"></script>
+</head>
+<body>
+  <!-- DOM element in which we'll mount our graph -->
+  <div id="graph-container"></div>
+
+  <!-- Use the `GitgraphJS` global variable to create your graph -->
+  <script src="js/app.js"></script>
+  <script>
+    const hotfix = master.branch("hotfix/PLEXON-1674")
+    .commit('[hotfix] PLEXON-1674: Change env var');
+
+
+    develop.merge(hotfix)
+    pre.merge(hotfix)
+
+    master.merge(hotfix);
+
+
+  </script>
+</body>
+</html>

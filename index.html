@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Load the JS file -->
+  <script src="https://cdn.jsdelivr.net/npm/@gitgraph/js"></script>
+</head>
+<body>
+  <!-- DOM element in which we'll mount our graph -->
+  <div id="graph-container"></div>
+
+  <!-- Use the `GitgraphJS` global variable to create your graph -->
+  <script src="js/app.js"></script>
+  <script>
+    const plexon_1212 = master.branch("story/PLEXON-1212");
+
+    plexon_1212
+        .commit("[wip] PLEXON-1212/PLEXON-1680: Make it work")
+        .commit("[wip] PLEXON-1212/PLEXON-1680: Make it right")
+        .commit("[imp] PLEXON-1212/PLEXON-1680:Make it fast");
+
+    const feature = master.branch("story/PLEXON-1218");
+
+    feature
+        .commit("[wip] PLEXON-1212/PLEXON-1680: Make it work")
+        .commit("[wip] PLEXON-1212/PLEXON-1680: Make it right")
+        .commit("[imp] PLEXON-1212/PLEXON-1680:Make it fast");
+
+    const release = master.branch("release")
+
+    develop.merge(plexon_1212);
+    develop.merge(feature);
+    qa.merge(feature);
+
+
+
+    release.merge(feature)
+    qa.merge(plexon_1212);
+    release.merge(plexon_1212)
+
+    pre.merge(release);
+    master.merge(release).tag("v1.0.0");
+
+
+
+  </script>
+</body>
+</html>
